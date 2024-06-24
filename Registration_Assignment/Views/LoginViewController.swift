@@ -9,7 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    private var viewModel = LoginViewModel()
+//    private var viewModel = LoginViewModel()
     
     private var phoneNumberTextField: UITextField = {
         let textField = UITextField()
@@ -39,7 +39,6 @@ class LoginViewController: UIViewController {
         titleLabel.textColor = UIColor(red: 21/255, green: 5/255, blue: 70/255, alpha: 1)
         titleLabel.font = UIFont.systemFont(ofSize: 24)
         titleLabel.text = "Welcome Back 👻"
-        //        titleLabel.numberOfLines = 0
         self.view.addSubview(titleLabel)
         
         // Login label
@@ -49,7 +48,6 @@ class LoginViewController: UIViewController {
         loginLabel.textColor = .black
         loginLabel.font = UIFont.systemFont(ofSize: 20)
         loginLabel.text = "Login to your Account"
-        //        loginLabel.numberOfLines = 0
         self.view.addSubview(loginLabel)
         
         // Send One Time Password Button
@@ -58,7 +56,6 @@ class LoginViewController: UIViewController {
         otpButton.setTitle("Send One Time Password", for: .normal)
         otpButton.backgroundColor = UIColor(red: 239/255, green: 75/255, blue: 75/255, alpha: 1)
         otpButton.layer.cornerRadius = 20
-        //        otpButton.addTarget(self, action: #selector(didTapNext(_:)), for: .touchUpInside)
         self.view.addSubview(otpButton)
         
         // Login using Password Button
@@ -68,7 +65,6 @@ class LoginViewController: UIViewController {
         loginPasswordButton.setTitleColor(UIColor(red: 239/255, green: 75/255, blue: 75/255, alpha: 1), for: .normal)
         loginPasswordButton.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
         loginPasswordButton.layer.cornerRadius = 20
-        //        otpButton.addTarget(self, action: #selector(didTapNext(_:)), for: .touchUpInside)
         self.view.addSubview(loginPasswordButton)
         
         self.view.addSubview(phoneNumberTextField)
@@ -102,14 +98,7 @@ class LoginViewController: UIViewController {
         ])
     }
     
-    @objc private func didTapSendOTP(_ sender: UIButton) {
-        guard let phoneNumber = phoneNumberTextField.text else {
-            showAlert(title: "Error", message: "Please enter your phone number.")
-            return
-        }
-        
-        viewModel.login(with: phoneNumber)
-    }
+  
     
     // MARK: - Alert
     
@@ -121,14 +110,5 @@ class LoginViewController: UIViewController {
     
 }
 
-// MARK: - LoginViewModelDelegate
 
-extension LoginViewController: LoginViewModelDelegate {
-    func loginSuccess() {
-        showAlert(title: "Success", message: "Login successful!")
-    }
-    
-    func loginError(message: String) {
-        showAlert(title: "Error", message: message)
-    }
-}
+

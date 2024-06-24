@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		ACEB35AC2C28F3D60053D7FC /* Registration_AssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEB35AB2C28F3D60053D7FC /* Registration_AssignmentTests.swift */; };
-		ACEB35B32C28F40A0053D7FC /* SignUpTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEB35B22C28F40A0053D7FC /* SignUpTest.swift */; };
 		ACFAF5B42C1E09BE008E2B84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFAF5B32C1E09BE008E2B84 /* AppDelegate.swift */; };
 		ACFAF5B62C1E09BE008E2B84 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFAF5B52C1E09BE008E2B84 /* SceneDelegate.swift */; };
 		ACFAF5B82C1E09BE008E2B84 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFAF5B72C1E09BE008E2B84 /* WelcomeViewController.swift */; };
@@ -26,7 +25,6 @@
 		ACFAF6222C28D695008E2B84 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = ACFAF6212C28D695008E2B84 /* FirebaseAppCheck */; };
 		ACFAF6252C28D94A008E2B84 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = ACFAF6242C28D94A008E2B84 /* GoogleSignIn */; };
 		ACFAF6272C28D94A008E2B84 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ACFAF6262C28D94A008E2B84 /* GoogleSignInSwift */; };
-		ACFAF6292C28DA47008E2B84 /* GoogleSignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFAF6282C28DA47008E2B84 /* GoogleSignInCoordinator.swift */; };
 		ACFAF6322C28E79B008E2B84 /* RegisterUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFAF6312C28E79B008E2B84 /* RegisterUserRequest.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +41,6 @@
 /* Begin PBXFileReference section */
 		ACEB35A92C28F3D60053D7FC /* Registration_AssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Registration_AssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACEB35AB2C28F3D60053D7FC /* Registration_AssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration_AssignmentTests.swift; sourceTree = "<group>"; };
-		ACEB35B22C28F40A0053D7FC /* SignUpTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTest.swift; sourceTree = "<group>"; };
 		ACFAF5B02C1E09BE008E2B84 /* Registration_Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Registration_Assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFAF5B32C1E09BE008E2B84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACFAF5B52C1E09BE008E2B84 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +53,6 @@
 		ACFAF6102C286F9C008E2B84 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		ACFAF6122C2870E1008E2B84 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		ACFAF6142C28C4F0008E2B84 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		ACFAF6282C28DA47008E2B84 /* GoogleSignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInCoordinator.swift; sourceTree = "<group>"; };
 		ACFAF6312C28E79B008E2B84 /* RegisterUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				ACEB35AB2C28F3D60053D7FC /* Registration_AssignmentTests.swift */,
-				ACEB35B22C28F40A0053D7FC /* SignUpTest.swift */,
 			);
 			path = Registration_AssignmentTests;
 			sourceTree = "<group>";
@@ -151,7 +146,6 @@
 			children = (
 				ACFAF60C2C286804008E2B84 /* LoginViewModel.swift */,
 				ACFAF6122C2870E1008E2B84 /* SignUpViewModel.swift */,
-				ACFAF6282C28DA47008E2B84 /* GoogleSignInCoordinator.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -279,7 +273,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACEB35AC2C28F3D60053D7FC /* Registration_AssignmentTests.swift in Sources */,
-				ACEB35B32C28F40A0053D7FC /* SignUpTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +281,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACFAF6152C28C4F0008E2B84 /* LoginViewController.swift in Sources */,
-				ACFAF6292C28DA47008E2B84 /* GoogleSignInCoordinator.swift in Sources */,
 				ACFAF60D2C286805008E2B84 /* LoginViewModel.swift in Sources */,
 				ACFAF5B82C1E09BE008E2B84 /* WelcomeViewController.swift in Sources */,
 				ACFAF5B42C1E09BE008E2B84 /* AppDelegate.swift in Sources */,

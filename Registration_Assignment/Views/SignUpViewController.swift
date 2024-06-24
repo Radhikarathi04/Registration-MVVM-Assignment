@@ -9,7 +9,7 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    private var viewModel = SignUpViewModel()
+//    private var viewModel = SignUpViewModel()
     
     // UI Components declared at the class level
     private var usernameTextField: UITextField = {
