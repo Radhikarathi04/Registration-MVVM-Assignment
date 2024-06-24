@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.delegate = self
+//        viewModel.delegate = self
         view.backgroundColor = .white
         
         // Title label

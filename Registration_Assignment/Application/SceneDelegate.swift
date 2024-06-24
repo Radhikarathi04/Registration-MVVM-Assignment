@@ -1,0 +1,63 @@
+//
+//  SceneDelegate.swift
+//  Registration_Assignment
+//
+//  Created by Rathi, Radhika on 15/06/2024.
+//
+
+import UIKit
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    
+    var window: UIWindow?
+    
+    
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        //        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        // Create the welcome items
+        let items = [
+            WelcomeItem(title: "Find you first Meta Matches", description: "Join us and socialize with millions of meta humans"),
+        ]
+        
+        window = UIWindow(windowScene: windowScene)
+        
+        let viewModel = WelcomeViewModel(items: items)
+        
+        let welcomeViewController = WelcomeViewController(viewModel: viewModel)
+        let navigationController = UINavigationController(rootViewController: welcomeViewController)
+        
+        let window = UIWindow(windowScene: windowScene)
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+        self.window = window
+        
+    }
+    
+    func sceneDidDisconnect(_ scene: UIScene) {
+        
+    }
+    
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        
+    }
+    
+    func sceneWillResignActive(_ scene: UIScene) {
+        
+    }
+    
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        
+    }
+    
+    func sceneDidEnterBackground(_ scene: UIScene) {
+        
+    }
+    
+    
+}

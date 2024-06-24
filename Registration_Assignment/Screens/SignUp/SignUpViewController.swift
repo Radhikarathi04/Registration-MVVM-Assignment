@@ -9,7 +9,7 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-//    private var viewModel = SignUpViewModel()
+    //    private var viewModel = SignUpViewModel()
     
     // UI Components declared at the class level
     private var usernameTextField: UITextField = {
@@ -67,7 +67,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.delegate = self
+//        viewModel.delegate = self
         view.backgroundColor = .white
         
         // Title label
@@ -226,6 +226,41 @@ class SignUpViewController: UIViewController {
         return label
     }
     
+//    func bindData() {
+//        loginViewModel.credentialsInputErrorMessage.bind { [weak self] in
+//            self?.loginErrorDescriptionLabel.isHidden = false
+//            self?.loginErrorDescriptionLabel.text = $0
+//        }
+//        
+//        loginViewModel.isUsernameTextFieldHighLighted.bind { [weak self] in
+//            if $0 { self?.highlightTextField(self?.usernameTextField)}
+//        }
+//        
+//        loginViewModel.isPasswordTextFieldHighLighted.bind { [weak self] in
+//            if $0 { self?.highlightTextField(self?.passwordTextField)}
+//        }
+//        
+//        loginViewModel.errorMessage.bind {
+//            guard let errorMessage = $0 else { return }
+//        }
+//    }
+//    
+//    func login() {
+//           loginViewModel.login()
+//       }
+    
+//    func setDelegates() {
+//            usernameTextField.delegate = self
+//            passwordTextField.delegate = self
+//        }
+//    
+//    func highlightTextField(_ textField: UITextField) {
+//        textField.resignFirstResponder()
+//        textField.layer.borderWidth = 1.0
+//        textField.layer.borderColor = UIColor.red.cgColor
+//        textField.layer.cornerRadius = 3
+//    }
+    
     @objc private func didTapNext(_ sender: UIButton) {
         guard let fullName = usernameTextField.text,
               let email = emailTextField.text,
@@ -238,7 +273,7 @@ class SignUpViewController: UIViewController {
         // Assuming `showNameToAll` is determined by some other logic or UI state
         let showNameToAll = true // Placeholder value
         
-        viewModel.signUp(fullName: fullName, email: email, password: password, phoneNumber: phoneNumber, showNameToAll: showNameToAll)
+//        viewModel.signUp(fullName: fullName, email: email, password: password, phoneNumber: phoneNumber, showNameToAll: showNameToAll)
     }
     
     @objc private func handleLabelTap(_ sender: UITapGestureRecognizer) {
@@ -268,14 +303,33 @@ class SignUpViewController: UIViewController {
 }
 
 // MARK: - SignUpViewModelDelegate
-
-extension SignUpViewController: SignUpViewModelDelegate {
-    func signUpSuccess() {
-        showAlert(title: "Success", message: "Sign-up successful!")
-        // Optionally, navigate to the next screen or perform other actions upon successful sign-up
-    }
-    
-    func signUpError(message: String) {
-        showAlert(title: "Error", message: message)
-    }
-}
+//
+//extension SignUpViewController: SignUpViewModelDelegate {
+//    func signUpSuccess() {
+//        showAlert(title: "Success", message: "Sign-up successful!")
+//        // Optionally, navigate to the next screen or perform other actions upon successful sign-up
+//    }
+//    
+//    func signUpError(message: String) {
+//        showAlert(title: "Error", message: message)
+//    }
+//}
+//
+////MARK: - Text Field Delegate Methods
+//extension SignUpViewController: UITextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        usernameTextField.resignFirstResponder()
+//        passwordTextField.resignFirstResponder()
+//        return true
+//    }
+//    
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        loginErrorDescriptionLabel.isHidden = true
+//        usernameTextField.layer.borderWidth = 0
+//        passwordTextField.layer.borderWidth = 0
+//    }
+//    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.view.endEditing(true)
+//    }
+//}
