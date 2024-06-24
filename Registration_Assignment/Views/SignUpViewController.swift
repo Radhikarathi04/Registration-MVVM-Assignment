@@ -9,14 +9,67 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-        private var viewModel = SignUpViewModel()
+    private var viewModel = SignUpViewModel()
+    
+    // UI Components declared at the class level
+    private var usernameTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "Enter full name"
+        textField.layer.cornerRadius = 5
+        textField.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+        return textField
+    }()
+    
+    private var emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "Enter Email"
+        textField.layer.cornerRadius = 5
+        textField.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+        return textField
+    }()
+    
+    private var passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "Enter Password"
+        textField.layer.cornerRadius = 5
+        textField.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+        textField.isSecureTextEntry = true
+        return textField
+    }()
+    
+    private var phoneNumberTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "Enter Phone Number"
+        textField.layer.cornerRadius = 5
+        textField.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+        let countryCodeLabel = UILabel()
+        countryCodeLabel.text = "+91"
+        countryCodeLabel.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5)
+        countryCodeLabel.sizeToFit()
+        textField.leftView = countryCodeLabel
+        textField.leftViewMode = .always
+        return textField
+    }()
+    
+    private var showPasswordLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Show"
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = UIColor(red: 239/255, green: 75/255, blue: 75/255, alpha: 1)
+        label.isUserInteractionEnabled = true
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewModel.delegate = self
         view.backgroundColor = .white
         
-        // Do any additional setup after loading the view.
         // Title label
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -25,17 +78,14 @@ class SignUpViewController: UIViewController {
         titleLabel.font = UIFont.systemFont(ofSize: 24)
         titleLabel.text = "Let’s get to know each\nother 👋"
         titleLabel.numberOfLines = 0
-        
         self.view.addSubview(titleLabel)
         
-        let usernameTextField = UITextField()
-        usernameTextField.translatesAutoresizingMaskIntoConstraints = false
-        usernameTextField.placeholder = "Enter full name"
-        usernameTextField.layer.cornerRadius = 5
-        usernameTextField.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+        // Add subviews
         self.view.addSubview(usernameTextField)
-        
-        //TODO: Checkbox
+        self.view.addSubview(emailTextField)
+        self.view.addSubview(passwordTextField)
+        self.view.addSubview(phoneNumberTextField)
+        self.view.addSubview(showPasswordLabel)
         
         // Show my name to all
         let showMyNameLabel = UILabel()
@@ -48,52 +98,10 @@ class SignUpViewController: UIViewController {
         // If you turn off, you won't be able to see name of other members
         let turnOffLabel = UILabel()
         turnOffLabel.translatesAutoresizingMaskIntoConstraints = false
-        turnOffLabel.text = "If you turn off, you wont be able to see name of other members "
+        turnOffLabel.text = "If you turn off, you wont be able to see name of other members"
         turnOffLabel.font = UIFont.systemFont(ofSize: 10)
         turnOffLabel.textColor = UIColor(red: 95/255, green: 99/255, blue: 104/255, alpha: 1)
         self.view.addSubview(turnOffLabel)
-        
-        let emailTextField = UITextField()
-        emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        emailTextField.placeholder = "Enter Email"
-        emailTextField.layer.cornerRadius = 5
-        emailTextField.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
-        self.view.addSubview(emailTextField)
-        
-        // Password textfield
-        let passwordTextField = UITextField()
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.placeholder = "Enter Password"
-        passwordTextField.layer.cornerRadius = 5
-        passwordTextField.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
-        passwordTextField.isSecureTextEntry = true
-        self.view.addSubview(passwordTextField)
-        
-        // Add a toggle button to the passwordTextField
-        let showPasswordLabel = UILabel()
-        showPasswordLabel.translatesAutoresizingMaskIntoConstraints = false
-        showPasswordLabel.text = "Show"
-        showPasswordLabel.font = UIFont.systemFont(ofSize: 12)
-        showPasswordLabel.textColor = UIColor(red: 239/255, green: 75/255, blue: 75/255, alpha: 1)
-        showPasswordLabel.isUserInteractionEnabled = true
-        self.view.addSubview(showPasswordLabel)
-        
-        // Phone number textfield with country code
-        let phoneNumberTextField = UITextField()
-        phoneNumberTextField.translatesAutoresizingMaskIntoConstraints = false
-        phoneNumberTextField.placeholder = "Enter Phone Number"
-        phoneNumberTextField.layer.cornerRadius = 5
-        phoneNumberTextField.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
-        
-        let countryCodeLabel = UILabel()
-        countryCodeLabel.text = "+91"
-        countryCodeLabel.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5)
-        countryCodeLabel.sizeToFit()
-        
-        phoneNumberTextField.leftView = countryCodeLabel
-        phoneNumberTextField.leftViewMode = .always
-        
-        self.view.addSubview(phoneNumberTextField)
         
         // UILabel - Contact Privacy Settings
         let contactLabel = UILabel()
@@ -116,14 +124,12 @@ class SignUpViewController: UIViewController {
         self.view.addSubview(showToMembersLabel)
         
         // Next Button
-        //TODO: Transition to Next screen
         let nextButton = UIButton()
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         nextButton.setTitle("Next", for: .normal)
         nextButton.backgroundColor = UIColor(red: 239/255, green: 75/255, blue: 75/255, alpha: 1)
         nextButton.layer.cornerRadius = 20
-//        getStartedButton.addTarget(self, action: #selector(didTapGetStarted(_:)), for: .touchUpInside)
-        
+        nextButton.addTarget(self, action: #selector(didTapNext(_:)), for: .touchUpInside)
         self.view.addSubview(nextButton)
         
         // Constraints
@@ -190,7 +196,6 @@ class SignUpViewController: UIViewController {
             nextButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 121),
             nextButton.widthAnchor.constraint(equalToConstant: 161),
             nextButton.heightAnchor.constraint(equalToConstant: 55),
-            
         ])
         
         // Adding gesture recognizer to showPasswordLabel
@@ -200,70 +205,77 @@ class SignUpViewController: UIViewController {
         // Set as the right view of passwordTextField
         passwordTextField.rightView = showPasswordLabel
         passwordTextField.rightViewMode = .always
-        
-        // Assigning text field to class property for visibility toggle
-        self.passwordTextField = passwordTextField
-        self.showPasswordLabel = showPasswordLabel
-        
-        
     }
-
+    
     private func createSelectableLabel(text: String) -> UILabel {
-            let label = UILabel()
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = text
-            label.textAlignment = .center
-            label.font = UIFont.systemFont(ofSize: 14)
-            label.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5)
-            label.layer.borderWidth = 2
-            label.layer.borderColor = CGColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
-            label.layer.cornerRadius = 20
-            label.isUserInteractionEnabled = true
-            
-            // Add tap gesture recognizer
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleLabelTap(_:)))
-            label.addGestureRecognizer(tapGesture)
-            
-            return label
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = text
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5)
+        label.layer.borderWidth = 2
+        label.layer.borderColor = CGColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+        label.layer.cornerRadius = 20
+        label.isUserInteractionEnabled = true
+        
+        // Add tap gesture recognizer
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleLabelTap(_:)))
+        label.addGestureRecognizer(tapGesture)
+        
+        return label
+    }
+    
+    @objc private func didTapNext(_ sender: UIButton) {
+        guard let fullName = usernameTextField.text,
+              let email = emailTextField.text,
+              let password = passwordTextField.text,
+              let phoneNumber = phoneNumberTextField.text else {
+            showAlert(title: "Error", message: "Please fill in all fields.")
+            return
         }
         
-    @objc private func handleLabelTap(_ sender: UITapGestureRecognizer) {
-           if let label = sender.view as? UILabel {
-               if label.layer.borderColor == CGColor(red: 239/255, green: 75/255, blue: 75/255, alpha: 1) {
-                   // If selected, unselect and change to original border color
-                   label.layer.borderColor = CGColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
-               } else {
-                   // If unselected, select and change to highlight border color
-                   label.layer.borderColor = CGColor(red: 239/255, green: 75/255, blue: 75/255, alpha: 1)
-               }
-           }
-       }
+        // Assuming `showNameToAll` is determined by some other logic or UI state
+        let showNameToAll = true // Placeholder value
+        
+        viewModel.signUp(fullName: fullName, email: email, password: password, phoneNumber: phoneNumber, showNameToAll: showNameToAll)
+    }
     
-    private var passwordTextField: UITextField?
-    private var showPasswordLabel: UILabel?
+    @objc private func handleLabelTap(_ sender: UITapGestureRecognizer) {
+        if let label = sender.view as? UILabel {
+            if label.layer.borderColor == CGColor(red: 239/255, green: 75/255, blue: 75/255, alpha: 1) {
+                // If selected, unselect and change to original border color
+                label.layer.borderColor = CGColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+            } else {
+                // If unselected, select and change to highlight border color
+                label.layer.borderColor = CGColor(red: 239/255, green: 75/255, blue: 75/255, alpha: 1)
+            }
+        }
+    }
     
     @objc private func togglePasswordVisibility() {
-        guard let passwordTextField = passwordTextField, let showPasswordLabel = showPasswordLabel else { return }
-        
         passwordTextField.isSecureTextEntry.toggle()
         showPasswordLabel.text = passwordTextField.isSecureTextEntry ? "Show" : "Hide"
     }
-}
-
-extension SignUpViewController: SignUpViewModelDelegate {
-    func signUpSuccess() {
-        // Handle successful sign-up
-        showAlert(title: "Success", message: "Sign-up successful!")
-    }
-
-    func signUpError(message: String) {
-        // Handle sign-up error
-        showAlert(title: "Error", message: message)
-    }
-
+    
+    // MARK: - Alert
+    
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+}
+
+// MARK: - SignUpViewModelDelegate
+
+extension SignUpViewController: SignUpViewModelDelegate {
+    func signUpSuccess() {
+        showAlert(title: "Success", message: "Sign-up successful!")
+        // Optionally, navigate to the next screen or perform other actions upon successful sign-up
+    }
+    
+    func signUpError(message: String) {
+        showAlert(title: "Error", message: message)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+//import GoogleSignIn
 
 class WelcomeViewController: UIViewController {
     
@@ -90,6 +91,7 @@ class WelcomeViewController: UIViewController {
             googleSignInButton.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
             googleSignInButton.setImage(UIImage(named: "google.logo"), for: .normal)
             googleSignInButton.layer.cornerRadius = 20
+            googleSignInButton.addTarget(self, action: #selector(googleSignInButtonTapped), for: .touchUpInside)
             
             self.view.addSubview(googleSignInButton)
             
@@ -105,11 +107,18 @@ class WelcomeViewController: UIViewController {
             // Already have a account? Log in
             let accountLabel = UILabel()
             accountLabel.translatesAutoresizingMaskIntoConstraints = false
-            accountLabel.text = "Already have an account? Log in"
             accountLabel.textAlignment = .center
             accountLabel.font = UIFont.systemFont(ofSize: 16)
+            accountLabel.isUserInteractionEnabled = true
+            
+            let attributedAccountLabel = NSMutableAttributedString(string: "Already have an account? Log in")
+            attributedAccountLabel.addAttribute(.foregroundColor, value: UIColor.red, range: NSRange(location: 25, length: 6))
+            accountLabel.attributedText = attributedAccountLabel
             
             self.view.addSubview(accountLabel)
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(logInLabelTapped))
+            accountLabel.addGestureRecognizer(tapGesture)
             
             
             NSLayoutConstraint.activate([
@@ -161,16 +170,26 @@ class WelcomeViewController: UIViewController {
             previousCircleView = circleView
         }
     }
-        
-        @objc func didTapGetStarted(_ sender: UIButton) {
-            guard let navigationController = self.navigationController else {
-                print("Navigation controller is nil.")
-                return
-            }
-            let signUpVC = SignUpViewController()
-            navigationController.pushViewController(signUpVC, animated: true)
-        }
-        
-        
+    
+    @objc private func googleSignInButtonTapped() {
+        //          let signInCoordinator = GoogleSignInCoordinator()
+        //          signInCoordinator.signIn()
     }
     
+    @objc private func logInLabelTapped() {
+        // Navigate to LogInViewController
+        let loginViewController = LoginViewController()
+        navigationController?.pushViewController(loginViewController, animated: true)
+    }
+    
+    @objc func didTapGetStarted(_ sender: UIButton) {
+        guard let navigationController = self.navigationController else {
+            print("Navigation controller is nil.")
+            return
+        }
+        let signUpVC = SignUpViewController()
+        navigationController.pushViewController(signUpVC, animated: true)
+    }
+    
+}
+

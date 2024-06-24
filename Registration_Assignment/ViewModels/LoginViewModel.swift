@@ -5,19 +5,25 @@
 //  Created by Rathi, Radhika on 23/06/2024.
 //
 
-import Foundation
-import Combine
 
-struct User {
-    let email: String
-    let password: String
+import Foundation
+
+protocol LoginViewModelDelegate: AnyObject {
+    func loginSuccess()
+    func loginError(message: String)
 }
 
 class LoginViewModel {
     
-    var username: String = ""
-    var password: String = ""
+    weak var delegate: LoginViewModelDelegate?
     
-    var isLoginSuccessful: Bool = false
-    var errorMessage: String = ""
+    func login(with phoneNumber: String) {
+        if phoneNumber.isEmpty {
+            delegate?.loginError(message: "Phone number cannot be empty")
+            return
+        }
+        
+        delegate?.loginSuccess()
+    }
 }
+

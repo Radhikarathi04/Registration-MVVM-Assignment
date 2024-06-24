@@ -7,30 +7,6 @@
 
 import Foundation
 
-struct SignUpModel {
-    var fullName: String
-    var email: String
-    var password: String
-    var phoneNumber: String
-    var showNameToAll: Bool
-
-    func isValidEmail() -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: email)
-    }
-
-    func isValidPassword() -> Bool {
-        return password.count >= 6
-    }
-
-    func isValidPhoneNumber() -> Bool {
-        let phoneNumberRegEx = "^[0-9]{10}$"
-        let phoneNumberTest = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegEx)
-        return phoneNumberTest.evaluate(with: phoneNumber)
-    }
-}
-
 protocol SignUpViewModelDelegate: AnyObject {
     func signUpSuccess()
     func signUpError(message: String)
@@ -39,10 +15,10 @@ protocol SignUpViewModelDelegate: AnyObject {
 class SignUpViewModel {
     weak var delegate: SignUpViewModelDelegate?
 
-    private var signUpModel: SignUpModel
+    private var signUpModel: User
 
     init() {
-        self.signUpModel = SignUpModel(fullName: "", email: "", password: "", phoneNumber: "", showNameToAll: true)
+        self.signUpModel = User(fullName: "", email: "", password: "", phoneNumber: "", showNameToAll: true)
     }
 
     func signUp(fullName: String, email: String, password: String, phoneNumber: String, showNameToAll: Bool) {
@@ -65,17 +41,31 @@ class SignUpViewModel {
         if signUpModel.fullName.isEmpty {
             return (false, "Full name is required.")
         }
-        if !signUpModel.isValidEmail() {
+        if !isValidEmail(signUpModel.email) {
             return (false, "Invalid email address.")
         }
-        if !signUpModel.isValidPassword() {
+        if !isValidPassword(signUpModel.password) {
             return (false, "Password must be at least 6 characters.")
         }
-        if !signUpModel.isValidPhoneNumber() {
+        if !isValidPhoneNumber(signUpModel.phoneNumber) {
             return (false, "Invalid phone number.")
         }
         return (true, nil)
     }
+
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
+    }
+    
+    private func isValidPassword(_ password: String) -> Bool {
+        return password.count >= 6
+    }
+    
+    private func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
+        let phoneNumberRegEx = "^[0-9]{10}$"
+        let phoneNumberTest = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegEx)
+        return phoneNumberTest.evaluate(with: phoneNumber)
+    }
 }
-
-
