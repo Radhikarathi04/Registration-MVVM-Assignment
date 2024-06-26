@@ -208,10 +208,6 @@ class WelcomeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    required init?(coder aDecoder: NSCoder) {
-//       super.init(coder: aDecoder)
-//    }
-    
     override func loadView() {
         print("loadView called")
         view = welcomeView
@@ -225,9 +221,10 @@ class WelcomeViewController: UIViewController {
             self?.viewModel.handleGetStarted()
         }
         
-        welcomeView.googleButtonAction = { [weak self] in
-            self?.viewModel.handleGoogleSignIn()
-        }
+		welcomeView.googleButtonAction = { [weak self] in
+			guard let self = self else { return }
+			self.viewModel.handleGoogleSignIn(presenter: self)
+		}
         
         welcomeView.appleButtonAction = { [weak self] in
             self?.viewModel.handleAppleSignIn()
@@ -251,8 +248,7 @@ class WelcomeViewController: UIViewController {
             self?.navigationController?.pushViewController(firstLoginViewController, animated: true)
             
         }
-        
-        
+   
     }
     
     private func updateView() {
