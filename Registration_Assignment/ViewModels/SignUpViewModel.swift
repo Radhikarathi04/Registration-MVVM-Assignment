@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 protocol SignUpViewModelDelegate: AnyObject {
     func signUpSuccess()
@@ -20,7 +21,14 @@ class SignUpViewModel {
     init() {
         self.signUpModel = User(fullName: "", email: "", password: "", phoneNumber: "", showNameToAll: true)
     }
-
+    
+    /// This function is used for signUp
+    /// - Parameters:
+    ///   - fullName: abc
+    ///   - email: b
+    ///   - password: c
+    ///   - phoneNumber: d
+    ///   - showNameToAll: e
     func signUp(fullName: String, email: String, password: String, phoneNumber: String, showNameToAll: Bool) {
         signUpModel.fullName = fullName
         signUpModel.email = email
@@ -31,7 +39,15 @@ class SignUpViewModel {
         let validation = validateFields()
         if validation.isValid {
             // Simulate sign-up success
-            delegate?.signUpSuccess()
+//            delegate?.signUpSuccess()
+			
+            Auth.auth().createUser(withEmail: email, password: password) { signUpResult, error in
+                guard error == nil else {return}
+                
+                guard let signUpResult = signUpResult else {return}
+				print("sign up successful")
+                
+            }
         } else {
             delegate?.signUpError(message: validation.errorMessage ?? "Unknown error")
         }

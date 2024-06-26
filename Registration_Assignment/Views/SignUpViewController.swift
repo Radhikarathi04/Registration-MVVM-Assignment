@@ -25,6 +25,7 @@ class SignUpViewController: UIViewController {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Enter Email"
+		textField.autocapitalizationType = .none
         textField.layer.cornerRadius = 5
         textField.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
         return textField
@@ -235,8 +236,7 @@ class SignUpViewController: UIViewController {
             return
         }
         
-        // Assuming `showNameToAll` is determined by some other logic or UI state
-        let showNameToAll = true // Placeholder value
+        let showNameToAll = true 
         
         viewModel.signUp(fullName: fullName, email: email, password: password, phoneNumber: phoneNumber, showNameToAll: showNameToAll)
     }

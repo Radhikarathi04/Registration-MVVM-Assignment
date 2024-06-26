@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import GoogleSignIn
+import GoogleSignIn
 
 class WelcomeViewController: UIViewController {
     
@@ -172,8 +172,25 @@ class WelcomeViewController: UIViewController {
     }
     
     @objc private func googleSignInButtonTapped() {
-        //          let signInCoordinator = GoogleSignInCoordinator()
-        //          signInCoordinator.signIn()
+                GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
+//                    self.btnGoogleSignIn.isHidden = false
+//                    self.btnGoogleSignOut.isHidden = true
+//                    self.lblSignInStatus.text = "Welcome To GoogleSignIn! To continue with GoogleSignIn please hit below button. "
+                    guard error == nil else { return }
+                    print("no error")
+
+                  // If sign in succeeded, display the app's main content View.
+                    guard let signInResult = signInResult else { return }
+                    print("sign in  result success")
+                    let user = signInResult.user
+
+                    let emailAddress = user.profile?.email
+                    let fullName = user.profile?.name
+                    let familyName = user.profile?.familyName
+                    let profilePicUrl = user.profile?.imageURL(withDimension: 320)
+                    print("Email \(emailAddress)")
+                }
+            
     }
     
     @objc private func logInLabelTapped() {
