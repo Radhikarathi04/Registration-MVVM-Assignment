@@ -16,6 +16,7 @@ class WelcomeView: UIView {
 	private let googleSignInButton = UIButton(type: .system)
 	private let appleSignInButton = UIButton(type: .system)
 	private let accountLabel = UILabel()
+	private let loginButton = UIButton(type: .system)
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -38,6 +39,7 @@ class WelcomeView: UIView {
 		googleSignInButton.translatesAutoresizingMaskIntoConstraints = false
 		appleSignInButton.translatesAutoresizingMaskIntoConstraints = false
 		accountLabel.translatesAutoresizingMaskIntoConstraints = false
+		loginButton.translatesAutoresizingMaskIntoConstraints = false
 		
 		// Add subviews
 		addSubview(titleLabel)
@@ -47,6 +49,7 @@ class WelcomeView: UIView {
 		addSubview(googleSignInButton)
 		addSubview(appleSignInButton)
 		addSubview(accountLabel)
+		addSubview(loginButton)
 		
 		// Configuring UI elements
 		
@@ -108,9 +111,16 @@ class WelcomeView: UIView {
 		accountLabel.textAlignment = .center
 		accountLabel.font = UIFont.systemFont(ofSize: 16)
 		accountLabel.isUserInteractionEnabled = true
-		let attributedAccountLabel = NSMutableAttributedString(string: "Already have an account? Log in")
-		attributedAccountLabel.addAttribute(.foregroundColor, value: UIColor.red, range: NSRange(location: 25, length: 6))
-		accountLabel.attributedText = attributedAccountLabel
+		accountLabel.text = "Already have an account?"
+//		let attributedAccountLabel = NSMutableAttributedString(string: "Already have an account?")
+//		attributedAccountLabel.addAttribute(.foregroundColor, value: UIColor.red, range: NSRange(location: 25, length: 6))
+//		accountLabel.attributedText = attributedAccountLabel
+		
+		// Login Button
+		loginButton.setTitle("Login", for: .normal)
+		loginButton.setTitleColor(.systemBlue, for: .normal)
+		loginButton.setTitleColor(UIColor(.red), for: .normal)
+		loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
 		
 		// Set up constraints
 		NSLayoutConstraint.activate([
@@ -144,7 +154,10 @@ class WelcomeView: UIView {
 			
 			accountLabel.topAnchor.constraint(equalTo: getStartedButton.bottomAnchor, constant: 20),
 			accountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-			accountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+			accountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+			
+			loginButton.leadingAnchor.constraint(equalTo: accountLabel.trailingAnchor, constant: -80),
+			loginButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -50)
 		])
 	}
 	
@@ -171,6 +184,12 @@ class WelcomeView: UIView {
 		}
 	}
 	
+	var loginButtonAction: (() -> Void)? {
+		didSet {
+			loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+		}
+	}
+	
 	@objc private func getStartedButtonTapped() {
 		getStartedButtonAction?()
 	}
@@ -181,5 +200,9 @@ class WelcomeView: UIView {
 	
 	@objc private func appleButtonTapped() {
 		appleButtonAction?()
+	}
+	
+	@objc private func loginButtonTapped() {
+		loginButtonAction?()
 	}
 }

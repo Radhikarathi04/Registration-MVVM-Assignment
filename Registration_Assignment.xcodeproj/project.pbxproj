@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		AC1537A42C2C3CB500628DB0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC1537A32C2C3CB400628DB0 /* GoogleService-Info.plist */; };
+		AC1537AA2C2C40BF00628DB0 /* SignUpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1537A92C2C40BF00628DB0 /* SignUpItem.swift */; };
+		AC1537AC2C2C40E400628DB0 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1537AB2C2C40E400628DB0 /* SignUpView.swift */; };
+		AC1537AE2C2C5DB300628DB0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AC1537AD2C2C5DB300628DB0 /* FirebaseAuth */; };
+		AC1537B02C2C70B200628DB0 /* ContactPrivacySettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1537AF2C2C70B200628DB0 /* ContactPrivacySettingsOption.swift */; };
+		AC1537C02C32B79A00628DB0 /* ContactPrivacyOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1537BF2C32B79A00628DB0 /* ContactPrivacyOptionCell.swift */; };
+		AC1537C22C32C0C200628DB0 /* WrappingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1537C12C32C0C200628DB0 /* WrappingFlowLayout.swift */; };
+		AC1537C42C3499D100628DB0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1537C32C3499D100628DB0 /* LoginView.swift */; };
+		AC1537C62C35BCD100628DB0 /* LoginScreenItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1537C52C35BCD100628DB0 /* LoginScreenItem.swift */; };
 		ACAAFF812C2977F100E33646 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAAFF802C2977F100E33646 /* WelcomeViewModel.swift */; };
 		ACAAFF872C2979D500E33646 /* WelcomeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAAFF862C2979D500E33646 /* WelcomeItem.swift */; };
 		ACAAFF892C29843000E33646 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAAFF882C29843000E33646 /* WelcomeView.swift */; };
@@ -44,6 +52,13 @@
 
 /* Begin PBXFileReference section */
 		AC1537A32C2C3CB400628DB0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AC1537A92C2C40BF00628DB0 /* SignUpItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpItem.swift; sourceTree = "<group>"; };
+		AC1537AB2C2C40E400628DB0 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		AC1537AF2C2C70B200628DB0 /* ContactPrivacySettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPrivacySettingsOption.swift; sourceTree = "<group>"; };
+		AC1537BF2C32B79A00628DB0 /* ContactPrivacyOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPrivacyOptionCell.swift; sourceTree = "<group>"; };
+		AC1537C12C32C0C200628DB0 /* WrappingFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappingFlowLayout.swift; sourceTree = "<group>"; };
+		AC1537C32C3499D100628DB0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		AC1537C52C35BCD100628DB0 /* LoginScreenItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenItem.swift; sourceTree = "<group>"; };
 		ACAAFF802C2977F100E33646 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		ACAAFF862C2979D500E33646 /* WelcomeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeItem.swift; sourceTree = "<group>"; };
 		ACAAFF882C29843000E33646 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -83,6 +98,7 @@
 				ACFAF6222C28D695008E2B84 /* FirebaseAppCheck in Frameworks */,
 				ACFAF6202C28D695008E2B84 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				ACFAF6252C28D94A008E2B84 /* GoogleSignIn in Frameworks */,
+				AC1537AE2C2C5DB300628DB0 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,8 +135,12 @@
 		ACAAFF842C29786B00E33646 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				AC1537A92C2C40BF00628DB0 /* SignUpItem.swift */,
+				AC1537AB2C2C40E400628DB0 /* SignUpView.swift */,
 				ACFAF6102C286F9C008E2B84 /* SignUpViewController.swift */,
 				ACFAF6122C2870E1008E2B84 /* SignUpViewModel.swift */,
+				AC1537BF2C32B79A00628DB0 /* ContactPrivacyOptionCell.swift */,
+				AC1537C12C32C0C200628DB0 /* WrappingFlowLayout.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -128,6 +148,8 @@
 		ACAAFF852C29788500E33646 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				AC1537C52C35BCD100628DB0 /* LoginScreenItem.swift */,
+				AC1537C32C3499D100628DB0 /* LoginView.swift */,
 				ACFAF6142C28C4F0008E2B84 /* LoginViewController.swift */,
 				ACFAF60C2C286804008E2B84 /* LoginViewModel.swift */,
 			);
@@ -190,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				ACFAF6312C28E79B008E2B84 /* RegisterUserRequest.swift */,
+				AC1537AF2C2C70B200628DB0 /* ContactPrivacySettingsOption.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,6 +259,7 @@
 				ACFAF6212C28D695008E2B84 /* FirebaseAppCheck */,
 				ACFAF6242C28D94A008E2B84 /* GoogleSignIn */,
 				ACFAF6262C28D94A008E2B84 /* GoogleSignInSwift */,
+				AC1537AD2C2C5DB300628DB0 /* FirebaseAuth */,
 			);
 			productName = Registration_Assignment;
 			productReference = ACFAF5B02C1E09BE008E2B84 /* Registration_Assignment.app */;
@@ -316,18 +340,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC1537AA2C2C40BF00628DB0 /* SignUpItem.swift in Sources */,
 				ACFAF6152C28C4F0008E2B84 /* LoginViewController.swift in Sources */,
+				AC1537C22C32C0C200628DB0 /* WrappingFlowLayout.swift in Sources */,
 				ACFAF60D2C286805008E2B84 /* LoginViewModel.swift in Sources */,
 				ACFAF5B82C1E09BE008E2B84 /* WelcomeViewController.swift in Sources */,
 				ACAAFF872C2979D500E33646 /* WelcomeItem.swift in Sources */,
+				AC1537C62C35BCD100628DB0 /* LoginScreenItem.swift in Sources */,
 				ACFAF5B42C1E09BE008E2B84 /* AppDelegate.swift in Sources */,
 				ACEB35B52C295E470053D7FC /* Observable.swift in Sources */,
 				ACAAFF812C2977F100E33646 /* WelcomeViewModel.swift in Sources */,
 				ACAAFF892C29843000E33646 /* WelcomeView.swift in Sources */,
 				ACFAF5B62C1E09BE008E2B84 /* SceneDelegate.swift in Sources */,
+				AC1537AC2C2C40E400628DB0 /* SignUpView.swift in Sources */,
+				AC1537C42C3499D100628DB0 /* LoginView.swift in Sources */,
 				ACFAF6322C28E79B008E2B84 /* RegisterUserRequest.swift in Sources */,
+				AC1537C02C32B79A00628DB0 /* ContactPrivacyOptionCell.swift in Sources */,
 				ACFAF6132C2870E1008E2B84 /* SignUpViewModel.swift in Sources */,
 				ACFAF6112C286F9C008E2B84 /* SignUpViewController.swift in Sources */,
+				AC1537B02C2C70B200628DB0 /* ContactPrivacySettingsOption.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +643,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AC1537AD2C2C5DB300628DB0 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACFAF6182C28D695008E2B84 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		ACFAF6192C28D695008E2B84 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = ACFAF6182C28D695008E2B84 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

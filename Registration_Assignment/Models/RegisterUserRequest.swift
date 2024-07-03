@@ -8,8 +8,9 @@
 import Foundation
 
 struct User {
-    var username: String = ""
+    var fullName: String = ""
     var email: String = ""
     var password: String = ""
     var phoneNumber: String = ""
+	var showNameToAll: Bool = false
 }
